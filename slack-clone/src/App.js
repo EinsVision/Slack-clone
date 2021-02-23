@@ -3,9 +3,9 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+import Header from './Header';
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
       <Router>
       <>
         <Switch>
-          <Route path="/">
-            <h1>This is the homepage.</h1>
+          <Route exact path="/">
+            <Header />
           </Route>
         </Switch>
       </>
