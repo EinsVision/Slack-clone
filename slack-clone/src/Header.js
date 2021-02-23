@@ -4,24 +4,22 @@ import styled from 'styled-components';
 
 function Header() {
   return (
-    <Wrapper>
+    
       <HeaderContainer>
-        Styled Components
+        {/* Header left */}
+
+        {/* Header Search */}
+
+        {/* Header right */}
+        
       </HeaderContainer>
-    </Wrapper>
+    
   )
 }
 
 export default Header;
 
-const HeaderContainer = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
+const HeaderContainer = styled.div`
 
-const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
 `;
 
