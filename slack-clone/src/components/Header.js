@@ -31,11 +31,11 @@ const HeaderContainer = styled.div`
   width: 100%;
   align-items: center;
   padding: 10px 0;
+  background-color: var(--slack-color);
 `;
 
 const HeaderLeft = styled.div`
   flex: 0.3;
-  border: 1px solid gray;
   display: flex;
   align-items: center;
   margin-left: 20px;
@@ -43,6 +43,7 @@ const HeaderLeft = styled.div`
   > .MuiSvgIcon-root{
     margin-left: auto;
     margin-right: 30px;
+    color: white;
   }
 `;
 
