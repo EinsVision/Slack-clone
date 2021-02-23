@@ -2,6 +2,15 @@ import React from 'react'
 import styled from 'styled-components';
 import CreateIcon from '@material-ui/icons/Create';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import SidebarOption from './SidebarOption';
+import InsertCommentIcon from '@material-ui/icons/InsertComment';
+import InboxIcon from '@material-ui/icons/Inbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
+import AppsIcon from '@material-ui/icons/Apps';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 function Sidebar() {
   return (
@@ -17,7 +26,15 @@ function Sidebar() {
         <CreateIcon />
       </SidebarHeader>
 
-      
+      <SidebarOption Icon={InsertCommentIcon} title='Threads'/>
+      <SidebarOption Icon={InboxIcon} title='Mentions & Reactions'/>
+      <SidebarOption Icon={DraftsIcon} title='Saved Items'/>
+      <SidebarOption Icon={BookmarkIcon} title='Channel Browser'/>
+      <SidebarOption Icon={PeopleAltIcon} title='People & User group'/>
+      <SidebarOption Icon={AppsIcon} title='Apps'/>
+      <SidebarOption Icon={FileCopyIcon} title='File Browser'/>
+      <SidebarOption Icon={ExpandLessIcon} title='Show Less'/>
+      <hr />
     </SidebarContainer>
   )
 }
