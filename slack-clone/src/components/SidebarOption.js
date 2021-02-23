@@ -20,10 +20,10 @@ function SidebarOption( {Icon, title, addChannelOption, id} ) {
   const selectChannel = () => {
     if(id){
       dispatch(enterRoom({
-        roomId: id,
+        roomId: id
       }))
     }
-  }
+  };
 
   return (
     <SidebarOptionContainer
@@ -68,6 +68,3 @@ const SidebarOptionChannel = styled.h3`
   padding: 10px 0;
   font-weight: 300;
 `;
-
-
-// 1;42;13
