@@ -2,15 +2,35 @@ import React from 'react'
 import styled from 'styled-components';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import { useSelector } from 'react-redux';
+import { selectRoomId } from '../features/appSlice';
+import ChatInput from './ChatInput';
+import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
+import { db } from '../firebase';
+import Message from './Message';
 
 function Chat() {
+  const roomId = useSelector(selectRoomId);
+
+  console.log('roomId: ', roomId)
+  const [roomDetails] = useDocument(
+    roomId && db.collection('rooms').doc(roomId)
+  )
+
+  const [roomMessages] = useCollection(
+    roomId && 
+    db.collection('rooms').doc(roomId).collection('messages').orderBy('timestamp', 'asc')
+  );
+
+  console.log('roomMessage: ', roomMessages);
+  console.log('roomDetails: ', roomDetails?.data());
   return (
     <ChatContainer>
       <>
         <Header>
           <HeaderLeft>
             <h4>
-              <strong>#Room-name</strong>
+              <strong>#{roomDetails?.data().name}</strong>
             </h4>
             <StarBorderIcon />
           </HeaderLeft>
@@ -20,8 +40,27 @@ function Chat() {
               <HelpOutlineIcon /> Details
             </p>
           </HeaderRight>
-
         </Header>
+
+        <ChatMessages>
+          {roomMessages?.docs.map(doc => {
+            const {message, timestamp, user, userImage} = doc.data();
+
+            return (
+              <Message
+                key={doc.id}
+                message={message}
+                timestamp={timestamp}
+                user={user}
+                userImage={userImage}
+              />
+            )
+          })}
+        </ChatMessages>
+        <ChatInput
+          channelName={roomDetails?.data().name}
+          channelId={roomId}
+        />
       </>
     </ChatContainer>
   )
@@ -70,3 +109,8 @@ const ChatContainer = styled.div`
   overflow-y: scroll;
   margin-top: 60px;
 `;
+
+const ChatMessages = styled.div`
+
+`;
+

@@ -3,8 +3,12 @@ import styled from 'styled-components';
 import { db } from '../firebase';
 import { useDispatch } from 'react-redux';
 import { enterRoom } from '../features/appSlice';
+import { useCollection } from 'react-firebase-hooks/firestore';
 
 function SidebarOption( {Icon, title, addChannelOption, id} ) {
+  const [channels, loading, error] = useCollection(db.collection('rooms'));
+  console.log('channels on SidebarOption', channels);
+
   const dispatch = useDispatch();
 
   const addChannel = () => {
