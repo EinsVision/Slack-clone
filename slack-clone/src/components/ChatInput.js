@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { db } from '../firebase';
 import firebase from 'firebase';
 
-function ChatInput({ channelName, channelId }) {
+function ChatInput({ channelName, channelId, chatRef }) {
   const [input, setInput] = useState('');
 
   const sendMessage = e =>{
@@ -20,6 +20,10 @@ function ChatInput({ channelName, channelId }) {
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       user: 'einsvision',
       userImage: 'https://lh3.googleusercontent.com/ogw/ADGmqu9GElmcJVjw3GzbcE1wI1U9xhBf4fVroMKcCYsX=s83-c-mo'
+    });
+
+    chatRef.current.scrollIntoView({
+      behavior: 'smooth'
     });
 
     setInput('');
