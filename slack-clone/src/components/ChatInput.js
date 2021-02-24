@@ -11,7 +11,7 @@ function ChatInput({ channelName, channelId }) {
     e.preventDefault();
     console.log('channelId: ',channelId);
 
-    if(channelId) {
+    if(!channelId) {
       return false;
     } 
 
