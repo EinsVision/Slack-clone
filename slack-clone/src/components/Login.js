@@ -1,7 +1,15 @@
+import { Button } from '@material-ui/core';
 import React from 'react'
 import styled from 'styled-components';
+import { auth, provider } from '../firebase';
 
 function Login() {
+
+  const signIn = (e) => {
+    e.preventDefault();
+    auth.signInWithPopup(provider).catch((error) => alert(error));
+  }
+
   return (
     <LoginContainer>
       <LoginInnerContainer>
@@ -9,6 +17,10 @@ function Login() {
           src='https://cdn.mos.cms.futurecdn.net/SDDw7CnuoUGax6x9mTo7dd.jpg'
           alt=''
         />
+        <h1>Sign in to the einsvision Fam</h1>
+        <p>einsvision.slack.com</p>
+
+        <Button onClick={signIn}>Sign in with Google</Button>
       </LoginInnerContainer>
     </LoginContainer>
   )
@@ -33,5 +45,12 @@ const LoginInnerContainer = styled.div`
     object-fit: contain;
     height: 100px;
     margin-bottom: 40px;
+  }
+
+  > Button{
+    margin-top: 50px;
+    text-transform: inherit !important;
+    background-color: #0a8d48 !important;
+    color: white;
   }
 `;
